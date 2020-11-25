@@ -9,7 +9,6 @@ module.exports = {
     },
 
     create(data) {
-
         
         const query = `
             INSERT INTO products (
