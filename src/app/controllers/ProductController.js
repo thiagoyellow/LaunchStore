@@ -41,7 +41,7 @@ module.exports = {
                 File.create({ name: file.filename, path: file.path.replace(/\\/g, "/"), product_id }))
             await Promise.all(filesPromise)
 
-            return res.redirect(`products/${productId}/edit`)
+            return res.redirect(`/products/${product_id}/edit`)
             
         } catch (error) {
             console.error(error);
