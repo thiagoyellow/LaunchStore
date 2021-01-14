@@ -46,6 +46,11 @@ const Base = {
         return results.rows
     },
 
+    async findOneWithDeleted(filters) {
+      const results = await find(filters, `${this.table}_with_deleted`)
+      return results.rows[0]
+    },
+
     async create(fields) {
         try {
 
@@ -67,8 +72,7 @@ const Base = {
           } catch (error) {
             console.error(error)
           }
-        },
-
+    },
 
     update(id, fields) {
         try {
@@ -93,11 +97,14 @@ const Base = {
     }
 
 
-  },
+    },
+
     delete(id) {
         return db.query(`DELETE FROM ${this.table} WHERE id = $1`, [id])
-      }
+    },
+
+
     
-    }
+  }
 
 module.exports = Base
